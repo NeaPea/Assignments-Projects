@@ -56,7 +56,7 @@ const main = function () {
         let checkTxt = "checkTxt" + dice;
 
         if (saveCurrentDie === "1") { // This will stop the roll of your selected die
-             console.log("you saved die nr: " + dice); // ASK NIELS FOR ADVICE
+             console.log("you saved die nr: " + dice);
         } else {
             $(currentDie).innerHTML = roll();
         }
@@ -74,6 +74,7 @@ const CheckSaveStates = function () {  // Save dice function
             $(checkTxt).innerHTML = "This die was saved";
         } else {
             $(currentDieChecked).setAttribute("data-save", "0");
+            $(checkTxt).innerHTML = "Save die?";
         }
     }
 }
