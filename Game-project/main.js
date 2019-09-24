@@ -1,3 +1,4 @@
+//#region Important stuff
 "use strict";
 var $ = function (foo) {
     return document.getElementById(foo);    // save keystrokes
@@ -35,52 +36,90 @@ function readCookie(name) {
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
+//#endregion
 
 
 
-const main = function () {
 
-    const CheckSaveStates = function () {  // Save dice function
-        for (let DiceNumber = 1; DiceNumber < 6; DiceNumber++) { // We create this loop to iterate through all the dice to apply the value "1" = checked.
-            let savedDiceName = "saveD" + DiceNumber;
-            let currentDieChecked = "die" + DiceNumber;
-            let checkTxt = "checkTxt" + DiceNumber;
+// Global variables
+let timesRolled = 0; // The allowed amount of times a player has initially rolled
+let allowedRolls = 3; // Max rolls per round/player
+let currentPlayer = 1; // Var to be used for player turns 
 
-            if ($(savedDiceName).checked) {
-                $(currentDieChecked).setAttribute("data-save", "1");   // This adds the value "1" to the data-save class and mark it as Checked for our script
-                $(checkTxt).innerHTML = "This die was saved";
-            } else {
-                $(currentDieChecked).setAttribute("data-save", "0");
-                $(checkTxt).innerHTML = "Save die?";
-            }
+
+
+
+
+// Save dice function
+const CheckSaveStates = function () {
+    for (let DiceNumber = 1; DiceNumber < 6; DiceNumber++) { // We create this loop to iterate through all the dice to apply the value "1" = checked.
+        let savedDiceName = "saveD" + DiceNumber;
+        let currentDieChecked = "die" + DiceNumber;
+        let checkTxt = "checkTxt" + DiceNumber;
+
+        if ($(savedDiceName).checked) {
+            $(currentDieChecked).setAttribute("data-save", "1");   // This adds the value "1" to the data-save class and mark it as Checked for our script
+            $(checkTxt).innerHTML = "This die was saved";
+        } else {
+            $(currentDieChecked).setAttribute("data-save", "0");
+            $(checkTxt).innerHTML = "Save die?";
         }
-
-       
     }
+}
 
-    const timesRolled = function () {
-        //        for (let timesRolled = 0; timesRolled < countRoll; timesRolled++) {;
-                    countRoll -= 1;
-                    if (countRoll > 0) {
-                        console.log('Reroll dice?');
-                    } else {
-                        alert('warning you clicked 3 times!');
-                    }
-                    return countRoll;
-                }
-        //    }
+// Get active player 
+const getActivePlayer = function () {
+    if () {
         
-    if (!timesRolled()) {
-        //write what is gonna happen when amount of roll has been roll
-    //}
-    CheckSaveStates(); // When calling the roll function, we will first check if we have saved any dices.
-
-
-    function roll() { // Roll function
-        let out = Math.random();
-        out = Math.floor(out * 6 + 1);
-        return out;
+    } else {
+        
     }
+
+}
+
+// Set active player
+const setActivePlayer = function () {
+    
+}
+
+// Keep track of turns
+const isRollAllowed = function () {
+    if (timesRolled < allowedRolls) {
+        console.log('times rolled: ' + timesRolled);
+        timesRolled += 1;
+    } else {
+        confirm('You have used all your rerolls!');
+        whoseTurn();
+    }
+}
+
+// Function to visualize whose turn it is.
+const activePlayer = function (player) {
+    if (player === 1) {
+        $('p1').style.backgroundColor = "green";
+        $('p2').style.backgroundColor = "red";
+    } else {
+        $('p1').style.backgroundColor = "red";
+        $('p2').style.backgroundColor = "green";
+    }
+}
+
+
+
+
+// Roll function
+function roll() { 
+    let out = Math.random();
+    out = Math.floor(out * 6 + 1);
+    return out;
+}
+
+
+const rollCallBtn = function () {
+      activePlayer(1);
+      whoseTurn();
+      isRollAllowed();
+      CheckSaveStates();
 
     for (let dice = 1; dice < 6; dice++) { // We create the loop so we can apply the roll function to all 5 dice.
         let currentDie = "die" + dice;  // Combining the string "die" with the amount of dice we have, instead of having to create several variables "die1, die2, die3 ..."
@@ -92,14 +131,10 @@ const main = function () {
             $(currentDie).innerHTML = roll();
         }
     }
-
-
-}
 }
 
 let init = function () {
-    $('btnRoll').addEventListener('click', main);
-
+    $('btnRoll').addEventListener('click', rollCallBtn);
 }
-let countRoll;
+
 window.addEventListener('load', init);
