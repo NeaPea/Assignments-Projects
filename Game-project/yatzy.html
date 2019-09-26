@@ -1,96 +1,112 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Just a nerd coding</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Just a nerd coding</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
 
 </head>
 
 
 <body>
-    <div id="navbar">
-        <h1 class="h1Style">Yatzy</h1>
-    </div>
+  <div id="navbar">
+    <h1 class="h1Style">Yatzy</h1>
+  </div>
 
-<div class="flex-conYat">
+  <div class="flex-conYat">
     <div class="allDices">
-        <div class="dieStyle"> <div id="die1" class="dieClass" data-save="0">0 </div><label id="checkTxt1" for="saveD1">Save die?</label><input type="checkbox" id="saveD1"></div>
-        <div class="dieStyle"> <div id="die2" class="dieClass" data-save="0">0 </div><label id="checkTxt2" for="saveD3">Save die?</label><input type="checkbox" id="saveD2"></div>
-        <div class="dieStyle"> <div id="die3" class="dieClass" data-save="0">0 </div><label id="checkTxt3" for="saveD4">Save die?</label><input type="checkbox" id="saveD3"></div>
-        <div class="dieStyle"> <div id="die4" class="dieClass" data-save="0">0 </div><label id="checkTxt4" for="saveD2">Save die?</label><input type="checkbox" id="saveD4"></div>
-        <div class="dieStyle"> <div id="die5" class="dieClass" data-save="0">0 </div><label id="checkTxt5" for="saveD5">Save die?</label><input type="checkbox" id="saveD5"></div>
+      <div class="dieStyle">
+        <div id="die1" class="dieClass" data-save="0">0</div><label id="checkTxt1" for="saveD1">Save die?</label><input
+          type="checkbox" id="saveD1">
+      </div>
+      <div class="dieStyle">
+        <div id="die2" class="dieClass" data-save="0">0</div><label id="checkTxt2" for="saveD3">Save die?</label><input
+          type="checkbox" id="saveD2">
+      </div>
+      <div class="dieStyle">
+        <div id="die3" class="dieClass" data-save="0">0 </div><label id="checkTxt3" for="saveD4">Save die?</label><input
+          type="checkbox" id="saveD3">
+      </div>
+      <div class="dieStyle">
+        <div id="die4" class="dieClass" data-save="0">0 </div><label id="checkTxt4" for="saveD2">Save die?</label><input
+          type="checkbox" id="saveD4">
+      </div>
+      <div class="dieStyle">
+        <div id="die5" class="dieClass" data-save="0">0 </div><label id="checkTxt5" for="saveD5">Save die?</label><input
+          type="checkbox" id="saveD5">
+      </div>
     </div>
     <div class="scoreStyle">
-        <p id="scoreBoard"></p>
-            <p>Score board</p>
-            <table style="width:100%">
-              <tr>
-                <th>Combinations</th>
-                <th id="p1">Player 1</th> 
-                <th id="p2">Player 2</th>
-              </tr>
-              <tr>
-                <td>1'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>2'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>3'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>4'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>5'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
+      <p id="scoreBoard"></p>
+      <p>Score board</p>
+      <table style="width:100%">
+        <tr>
+          <th>Combinations</th>
+          <th id="p1">Player 1</th>
+          <th id="p2">Player 2</th>
+        </tr>
+        <tr>
+          <td>1'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>2'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>3'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>4'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>5'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
 
-              <tr>
-                <td>6'ere</td>
-                <td>0</td> 
-                <td>0</td>
-              </tr>
+        <tr>
+          <td>6'ere</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
 
-              <tr>
-                  <td>Sum</td>
-                  <td>0</td> 
-                  <td>0</td>
-                </tr>
+        <tr>
+          <td>Sum</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
 
-                <tr>
-                    <td>Total sum</td>
-                    <td id="totalScore">0</td> 
-                    <td>0</td>
-                  </tr>
-            </table>
+        <tr>
+          <td>Total sum</td>
+          <td id="totalScore">0</td>
+          <td>0</td>
+        </tr>
+      </table>
     </div>
-    <div class="btnDiv">
-            <input type='submit' id='btnRoll' value='Roll'/>
-            <input type='reset' id="btnReset" value='Reset'/>
 
-            <form action="">
-              Player one name:<input type="text" name="" id="playerOne">
-              <br>
-              Player two name:<input type="text" name="" id="playerTwo">
-              <br>
-              <input type="submit" value="Start game">
-            </form>
+ 
+    <div class="btnDiv"><br>
+      <input type='button' class="btnStyle" id='btnRoll'/><br>
+      <br>
+      <form action="">
+        Player one name:<input type="text" name="" id="playerOneName">
+        <br>
+        Player two name:<input type="text" name="" id="playerTwoName">
+        <br>
+        <input type="button" value="Start game" id="btnStart"> <input type='button' id="btnEnd" value='End Game' />
+      </form>
     </div>
-</div>
+  </div>
 
 </body>
 

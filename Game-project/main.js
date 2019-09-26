@@ -38,17 +38,11 @@ function eraseCookie(name) {
 }
 //#endregion
 
-
-
-
 // Global variables
 let timesRolled = 0; // The allowed amount of times a player has initially rolled
-let allowedRolls = 3; // Max rolls per round/player
+let allowedRolls = 3; // Max rolls per round/player - three
 let currentPlayer = 1; // Var to be used for player turns 
-
-
-
-
+  
 
 // Save dice function
 const CheckSaveStates = function () {
@@ -69,27 +63,25 @@ const CheckSaveStates = function () {
 
 // Get active player 
 const getActivePlayer = function () {
-    if () {
-        
+    if ($('p1').style.backgroundColor == "green") {
+        return "player1";
     } else {
-        
+        return "player2";
     }
-
 }
 
-// Set active player
-const setActivePlayer = function () {
-    
-}
-
-// Keep track of turns
+// Keep track of turns, set color of current player, and countdown the rolls left.
 const isRollAllowed = function () {
-    if (timesRolled < allowedRolls) {
-        console.log('times rolled: ' + timesRolled);
+    if (timesRolled < (allowedRolls - 1)) {
         timesRolled += 1;
     } else {
-        confirm('You have used all your rerolls!');
-        whoseTurn();
+        if (getActivePlayer() == "player1"){
+            activePlayer(2);
+            console.log('player 2 turn');
+        }  else {
+            activePlayer(1);
+            console.log('player 1 turn');
+        }
     }
 }
 
@@ -102,13 +94,11 @@ const activePlayer = function (player) {
         $('p1').style.backgroundColor = "red";
         $('p2').style.backgroundColor = "green";
     }
+    timesRolled = 0;
 }
 
-
-
-
 // Roll function
-function roll() { 
+function roll() {
     let out = Math.random();
     out = Math.floor(out * 6 + 1);
     return out;
@@ -116,10 +106,8 @@ function roll() {
 
 
 const rollCallBtn = function () {
-      activePlayer(1);
-      whoseTurn();
-      isRollAllowed();
-      CheckSaveStates();
+    isRollAllowed();
+    CheckSaveStates();
 
     for (let dice = 1; dice < 6; dice++) { // We create the loop so we can apply the roll function to all 5 dice.
         let currentDie = "die" + dice;  // Combining the string "die" with the amount of dice we have, instead of having to create several variables "die1, die2, die3 ..."
@@ -133,8 +121,36 @@ const rollCallBtn = function () {
     }
 }
 
+const startGameBtn = function () {
+    if ($('playerOneName').value.length > 0 && $('playerTwoName').value.length > 0) {
+        $('p1').innerHTML = $('playerOneName').value;
+        $('p2').innerHTML = $('playerTwoName').value;
+    } else {
+        confirm('Please enter both names of players.');
+    }
+}
+
+/*  SAVE FOR  LATER
+const saveScoreboard = function() {     // This function creates the cookie
+    let inP = $('playerOneName').value;
+    let date = $('dat').value;
+
+
+    if (inP.length < 2 || date.length < 2) {  // IF name and date input is not filled, alert user
+        alert('enter a valid name and date')
+    } else {
+        createCookie(inP + date , 42, 0.006); // inP= "username" date = "date" 42 = "potential score", 0.006 = 10 min. 
+        console.log(document.cookie);
+    }
+}*/
+
+// Functions outside btn's
+
+
 let init = function () {
     $('btnRoll').addEventListener('click', rollCallBtn);
+    $('btnStart').addEventListener('click', startGameBtn);
+    activePlayer(1);
 }
 
 window.addEventListener('load', init);

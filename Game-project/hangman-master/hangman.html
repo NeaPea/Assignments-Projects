@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>hangman</title>
+    <meta charset='utf-8'/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src='hangman.js'></script>
+</head>
+    
+<body>
+
+  <div class="header">
+        <h1>Alpha Hangman Game</h1>
+  </div>
+  <div class="wrapper">
+    <h2>Use the alphabet below, or start typing to guess the word.
+      <br>
+      Click hint to get a clue. </h2>
+  </div>
+ <div class='row'>
+<div class='column'>
+  <div id="game">
+    <div id="buttons">
+  </div> 
+
+  <p id="categoryName"></p>
+  
+  <div id="hold">
+  </div>
+  
+  <p id="mylives"></p>
+  
+  <p id="clue"></p>
+  <div class="container">
+    <input type="text" class="inputNameStyle" placeholder="Enter name here" id="inputName" required>
+     <button id="startGame">Start game</button>
+      <button id="hint">Hint</button>
+      <button id="reset">Play again</button>
+    </div>
+  </div>
+</div>
+
+<div class='column'>
+<div class="scoreBoard">
+  <h3>Score Board</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Wins</th> 
+      </tr>
+      <tr>
+        <td id="playerScoreName"></td>
+        <td id="wins">0</td> 
+      </tr>
+    </table>
+  </div>
+  </div>
+</div>
+
+<footer>
+</footer>
+
+</body>
+    
+</html>
+
