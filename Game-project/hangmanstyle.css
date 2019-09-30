@@ -152,7 +152,7 @@ td , th {
    width: 50%;
 }
 
-.inputNameStyle {
+#inputNameStyle {
   height: 55px;
   width: 180px;
   font-size: 1.2em;
